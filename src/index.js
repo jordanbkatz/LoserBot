@@ -12,15 +12,14 @@ for (const file of files) {
     bot.commands.set(file.split('.')[0], command);
 }
 bot.on("ready", function() {
-    if (bot.user || bot.application) {
-        console.log(`Logged in as ${bot.user.tag}!`);
-    }
+    console.log(`Logged in as ${bot.user.tag}!`);
 });
-bot.on("messageCreate", async function(message) {
+bot.on("message", async function(message) {
     if (message.content.startsWith(prefix) || !message.author.bot) {
         let args = message.content.split(/\s+/);
         args.shift();
         let command = bot.commands.get(args[0]);
+        args.shift();
         if (!command) {
             command = bot.commands.get("invalid");
         }
