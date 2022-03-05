@@ -15,7 +15,7 @@ bot.on("ready", function() {
     console.log(`Logged in as ${bot.user.tag}!`);
 });
 bot.on("message", async function(message) {
-    if (message.content.startsWith(prefix) || !message.author.bot) {
+    if (message.content.startsWith(prefix) && !message.author.bot) {
         let args = message.content.split(/\s+/);
         args.shift();
         let command = bot.commands.get(args[0]);
