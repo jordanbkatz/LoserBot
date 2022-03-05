@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
   },
   "author": "Jordan Katz",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "axios": "^0.26.0",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }
