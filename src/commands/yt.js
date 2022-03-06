@@ -24,7 +24,7 @@ module.exports = async function(Discord, bot, message, args) {
             }
             const isUrl = validUrl(args[0]);       
             const video = await videoFinder(args.join(' '));
-            const stream = ytdl((isUrl) ? args[0] : video.url, { filter: "audioonly" });
+            const stream = ytdl((isUrl) ? args[0] : video.url, { filter: "audioonly", highWaterMark: 1<<25 });
             connection.play(stream, { seek: 0, volume: 1 }).on("finish", function() {
                 vc.leave();
             });
