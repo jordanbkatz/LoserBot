@@ -7,6 +7,12 @@ module.exports = async function(Discord, bot, message, args) {
         message.channel.send("Number of messages to delete must be between 1 and 100");
     }
     else {
-        message.channel.bulkDelete(amount);
+        try {
+            message.channel.bulkDelete(amount);
+        }
+        catch (err) {
+            message.channel.send("Failed to delete messages");
+            console.log(err);
+        }
     }
 };
