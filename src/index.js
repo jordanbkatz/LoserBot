@@ -24,7 +24,7 @@ bot.on("message", async function(message) {
             let command = bot.commands.get(args[0]);
             args.shift();
             try {
-                command(Discord, bot, message, args);
+                command.execute(Discord, bot, message, args);
             }
             catch(err) {
                 message.channel.send("Invalid command");
