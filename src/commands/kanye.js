@@ -9,7 +9,6 @@ module.exports = {
             message.channel.send(`"${response.data.quote}" - Kanye`);
         }).catch(function(err) {
             message.channel.send("Failed to fetch Kanye quote");
-            console.log(err);
         });
     }
 };

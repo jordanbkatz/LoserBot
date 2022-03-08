@@ -8,14 +8,11 @@ module.exports = {
         if (args[0]) {
             try {
                 const result = mathjs.evaluate(args.join(' '));
-                message.channel.send(`Result: ${result}`);
+                message.channel.send(result);
             }
             catch (err) {
                 message.channel.send("Failed to evaluate mathematical expression");
             }
-        }
-        else {
-            message.channel.send("You need to enter a mathematical expression");
         }
     }
 };

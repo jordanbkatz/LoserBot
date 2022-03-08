@@ -9,7 +9,6 @@ module.exports = {
             message.channel.send(`"${response.data}" - Hitler`);
         }).catch(function(err) {
             message.channel.send("Failed to fetch Hitler quote");
-            console.log(err);
         });
     }
 };

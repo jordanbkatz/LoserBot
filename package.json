@@ -17,6 +17,7 @@
     "ffmpeg-static": "^5.0.0",
     "fs": "^0.0.1-security",
     "mathjs": "^10.3.0",
+    "mongoose": "^6.2.4",
     "nodemon": "^2.0.15",
     "path": "^0.12.7",
     "yt-search": "^2.10.3",
