@@ -4,7 +4,7 @@ module.exports = {
     usage: [
         "$loser kanye"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         axios.get("https://api.kanye.rest/").then(function(response) {
             message.channel.send(`"${response.data.quote}" - Kanye`);
         }).catch(function(err) {

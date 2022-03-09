@@ -4,7 +4,7 @@ module.exports = {
     usage: [
         "$loser hitler"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         axios.get("https://hitler-api.herokuapp.com").then(function(response) {
             message.channel.send(`"${response.data}" - Hitler`);
         }).catch(function(err) {

@@ -1,5 +1,5 @@
 module.exports = {
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         const msgEmbed = new Discord.MessageEmbed()
             .setTitle("Need help?")
             .setDescription("Here is a list of all `$loser` commands:");

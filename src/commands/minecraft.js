@@ -3,7 +3,7 @@ module.exports = {
     usage: [
         "$loser minecraft <server_ip>"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
     
     }
 };

@@ -3,7 +3,7 @@ module.exports = {
     usage: [
         "$loser kick @<user>"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         const member = message.mentions.users.first();
         if (!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
             message.channel.send("You do not have the permissions to use this command");

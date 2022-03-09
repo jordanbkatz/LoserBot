@@ -4,7 +4,7 @@ module.exports = {
     usage: [
         "$loser math <expression>"
     ],
-    execute: async function (Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         if (args[0]) {
             try {
                 const result = mathjs.evaluate(args.join(' '));

@@ -1,11 +1,9 @@
 module.exports = {
-    description: "",
+    description: "get random number",
     usage: [
-        "$loser random number <min> <max>",
-        "$loser random user",
-        "$loser random user <role>"
+        "$loser random <min> <max>"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         if (args[0] && args[1]) {
             const min = parseInt(args[0]);
             const max = parseInt(args[1]);

@@ -5,7 +5,7 @@ module.exports = {
         "$loser meme",
         "$loser meme <limit>"
     ],
-    execute: async function(Discord, bot, message, args) {
+    execute: async function(Model, Discord, bot, message, args) {
         const limit = parseInt(args[0]) || 100;
         axios.get(`https://www.reddit.com/r/dankmemes/hot/.json?limit=${limit}`).then(function(response) {
             const allowed = response.data.data.children.filter(function(meme) {
