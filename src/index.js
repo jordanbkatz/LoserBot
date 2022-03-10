@@ -53,7 +53,7 @@ bot.on("message", async function(message) {
                         args.shift();
                         if (command) {
                             try {
-                                command.execute(Model, Discord, bot, message, args);
+                                command(Model, Discord, bot, message, args);
                             }
                             catch (err) {
                                 message.channel.send("Failed to execute command");
@@ -70,7 +70,7 @@ bot.on("message", async function(message) {
                     }
                 }
                 Model.findOneAndUpdate(
-                    { user: message.author.id, guild: message.guild.id }, 
+                    { user: message.author.id, guild: message.guild.id },
                     { $inc: { xp: gainedXp }},
                     function(err, res) {
                         if (err) console.log(err);

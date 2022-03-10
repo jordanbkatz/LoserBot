@@ -1,17 +1,10 @@
-module.exports = {
-    execute: async function(Model, Discord, bot, message, args) {
-        const msgEmbed = new Discord.MessageEmbed()
-            .setTitle("Need help?")
-            .setDescription("Here is a list of all `$loser` commands:");
-        for (const [name, command] of bot.commands.entries()) {
-            if (name !== "help") {
-                let value = "";
-                for (usage of command.usage) {
-                    value += `\`${usage}\`\n`;
-                }
-                msgEmbed.addField(command.description, value);
-            }
-        }
-        message.channel.send(msgEmbed);
-    }
+module.exports = async function(Model, Discord, bot, message, args) {
+  const response = new Discord.MessageEmbed();
+  response.setTitle("Here is a list of all `$loser` commands:");
+  let names = [];
+  for (const name of bot.commands.keys()) {
+    names.push(`\`${name}\``);
+  }
+  response.setDescription(names.join(', '));
+  message.channel.send(response);
 };
