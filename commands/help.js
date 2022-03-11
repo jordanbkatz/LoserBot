@@ -6,5 +6,5 @@ module.exports = async function(Model, Discord, bot, message, args) {
     names.push(`\`${name}\``);
   }
   response.setDescription(names.join(', '));
-  message.channel.send(response);
+  return response;
 };

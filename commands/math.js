@@ -1,5 +1,5 @@
 const mathjs = require('mathjs');
-module.exports = async function(Model, Discord, bot, message, args) {
+module.exports = async function(Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   if (args[0]) {
     try {
@@ -7,10 +7,12 @@ module.exports = async function(Model, Discord, bot, message, args) {
       response.setTitle(result);
     }
     catch (err) {
+      console.log(err.message);
       response.setTitle("Failed to evaluate mathematical expression");
     }
-    finally {
-      message.channel.send(response);
-    }
   }
+  else {
+    response.setTitle("Please enter mathematical expression");
+  }
+  return response;
 };

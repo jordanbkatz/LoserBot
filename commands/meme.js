@@ -11,6 +11,7 @@ module.exports = async function(Model, Discord, bot, message, args) {
       .setTitle(meme.title)
       .setImage(meme.preview.images[0].source.url.replace("amp;s", "s"));
   }).catch(function(err) {
+    console.log(err.message);
     response.setTitle("Failed to fetch meme");
   }).finally(function() {
     message.channel.send(response);

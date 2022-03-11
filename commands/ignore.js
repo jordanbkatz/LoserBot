@@ -1,4 +1,4 @@
-module.exports = async function(Model, Discord, bot, message, args) {
+module.exports = async function(Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   if (!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
     response.setTitle("You do not have the permissions to use this command");
@@ -9,7 +9,7 @@ module.exports = async function(Model, Discord, bot, message, args) {
       const member = message.mentions.users.first();
       switch(args[0]) {
         case "on":
-          Model.findOneAndUpdate(
+          Member.findOneAndUpdate(
             { user: member.id, guild: message.guild.id },
             { ignore: true },
             function(err, res) {
@@ -20,7 +20,7 @@ module.exports = async function(Model, Discord, bot, message, args) {
           );
           break;
         case "off":
-          Model.findOneAndUpdate(
+          Member.findOneAndUpdate(
             { user: member.id, guild: message.guild.id },
             { ignore: false },
             function(err, res) {
