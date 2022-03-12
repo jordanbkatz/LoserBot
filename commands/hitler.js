@@ -1,5 +1,5 @@
 const axios = require('axios');
-module.exports = async function(Model, Discord, bot, message, args) {
+module.exports = async function (Model, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   try {
     const quote = await axios.get("https://hitler-api.herokuapp.com");

@@ -1,4 +1,4 @@
-module.exports = async function(Model, Discord, bot, message, args) {
+module.exports = async function (Model, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   let error = true;
   const member = message.mentions.users.first();

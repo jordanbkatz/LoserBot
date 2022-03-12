@@ -1,4 +1,4 @@
-module.exports = async function(Member, Discord, bot, message, args) {
+module.exports = async function (Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   let error = true;
   if (message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {

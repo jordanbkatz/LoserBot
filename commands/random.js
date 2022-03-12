@@ -1,4 +1,4 @@
-module.exports = async function(Member, Discord, bot, message, args) {
+module.exports = async function (Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   if (args[0] && args[1]) {
     const min = parseInt(args[0]);
