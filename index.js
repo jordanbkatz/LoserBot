@@ -1,18 +1,8 @@
 require('dotenv').config();
 const config = require('./config.json');
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URI).then(function() {
-  console.log("Connected to database!");
-}).catch(function(err) {
-  console.log(err.message);
-});
-const Member = require('./models/Member.js');
 const Discord = require('discord.js');
 const intents = new Discord.Intents(32767);
 const bot = new Discord.Client({ intents });
-const prefix = "$loser";
-const cooldown = 3;
-let last = Date.now();
 bot.commands = new Discord.Collection();
 const fs = require('fs');
 const path = require('path');
@@ -21,11 +11,26 @@ for (const file of files) {
     const command = require(`./commands/${file}`);
     bot.commands.set(file.split('.')[0], command);
 }
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DB_URI).then(function() {
+  console.log("Connected to database!");
+}).catch(function(err) {
+  console.log(err.message);
+});
+const Member = mongoose.model("member", new mongoose.Schema({
+  user: String,
+  guild: String,
+  xp: Number,
+  ignore: Boolean
+}));
 bot.on("ready", function() {
     console.log(`Logged in as ${bot.user.tag}!`);
 });
+let last = Date.now();
 bot.on("message", async function(message) {
-    if (message.author.bot) return;
+    if (message.author.bot) {
+      return;
+    }
     const member = await Member.findOne({ user: message.author.id });
     if (!member) {
       const author = new Member({
@@ -38,10 +43,10 @@ bot.on("message", async function(message) {
     }
     if (!member || !member.ignore) {
       let gainedXp = 1;
-      if (message.content.startsWith(prefix)) {
+      if (message.content.startsWith(config.prefix)) {
         let response = new Discord.MessageEmbed();
         gainedXp = 10;
-        if ((Date.now() - last) / 1000 >= cooldown) {
+        if ((Date.now() - last) / 1000 >= config.cooldown) {
             let args = message.content.split(/\s+/);
             args.shift();
             let command = bot.commands.get(args[0]);
@@ -52,16 +57,16 @@ bot.on("message", async function(message) {
                 }
                 catch (err) {
                   console.log(err.message);
-                  response.setTitle("Failed to execute command");
+                  response.setTitle("Error!");
                 }
             }
             else {
-              response.setTitle("Failed to find command");
+              response.setTitle("Error!");
             }
             last = Date.now();
         }
         else {
-            const timeRemaining = ((cooldown * 1000 + last) - Date.now()) / 1000;
+            const timeRemaining = ((config.cooldown * 1000 + last) - Date.now()) / 1000;
             response.setTitle(`Please wait ${timeRemaining} seconds for cooldown to end`);
         }
         message.channel.send(response);

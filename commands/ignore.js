@@ -1,35 +1,42 @@
 module.exports = async function(Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
-  if (!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
-    response.setTitle("You do not have the permissions to use this command");
-    message.channel.send(response);
-  }
-  else {
-    if (args[0] && message.mentions.users.first()) {
+  let error = true;
+  if (message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
+    if (message.mentions.users.first() && args[0]) {
       const member = message.mentions.users.first();
       switch(args[0]) {
         case "on":
-          Member.findOneAndUpdate(
-            { user: member.id, guild: message.guild.id },
-            { ignore: true },
-            function(err, res) {
-              if (err) {
-                console.log(err);
-              };
-            }
-          );
+          try {
+            await Member.findOneAndUpdate(
+              { user: member.id, guild: message.guild.id },
+              { ignore: true }
+            );
+            response.setTitle("Ignore status turned on");
+            error = false;
+          }
+          catch (err) {
+            console.log(err.message);
+          }
           break;
         case "off":
-          Member.findOneAndUpdate(
-            { user: member.id, guild: message.guild.id },
-            { ignore: false },
-            function(err, res) {
-              if (err) console.log(err);
-            }
-          );
+          try {
+            await Member.findOneAndUpdate(
+              { user: member.id, guild: message.guild.id },
+              { ignore: false }
+            );
+            response.setTitle("Ignore status turned off");
+            error = false;
+          }
+          catch (err) {
+            console.log(err.message);
+          }
           break;
         default:
       }
     }
   }
+  if (error) {
+    response.setTitle("Error!");
+  }
+  return response;
 };

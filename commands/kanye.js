@@ -3,11 +3,12 @@ module.exports = async function(Member, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   try {
     const quote = await axios.get("https://api.kanye.rest/");
-    response.setTitle(`"${quote.data.quote}" - Kanye`);
+    response.setTitle("Kanye");
+    response.setDescription(`"${quote.data.quote}"`);
   }
   catch (err) {
     console.log(err.message);
-    response.setTitle("Failed to fetch Kanye quote");
+    response.setTitle("Error!");
   }
   finally {
     return response;

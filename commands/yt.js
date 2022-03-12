@@ -4,7 +4,7 @@ module.exports = async function(Model, Discord, bot, message, args) {
   const response = new Discord.MessageEmbed();
   const vc = message.member.voice.channel;
   if (!vc) {
-    response.setTitle("Plase be in a voice channel to use this command");
+    response.setTitle("Error!");
     message.channel.send(response);
   }
   if (args[0]) {

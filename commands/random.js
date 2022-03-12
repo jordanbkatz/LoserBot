@@ -7,7 +7,7 @@ module.exports = async function(Member, Discord, bot, message, args) {
     response.setTitle(random);
   }
   else {
-    response.setTitle("Please enter min and max values");
+    response.setTitle("Error!");
   }
   return response;
 };
