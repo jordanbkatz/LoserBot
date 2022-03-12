@@ -1,9 +1,19 @@
 # LoserBot Commands
 ## Moderation
 ### Kick a guild member
- * `$loser kick @user`
+#### Format
+`$loser kick <member>`
+#### Parameters
+* `member` - guild member to kick (member mention)
+#### Examples
+ * `$loser kick @member`
 ### Ban a guild member
-* `$loser ban @user`
+#### Format
+`$loser ban <member>`
+#### Parameters
+* `member` - guild member to ban (member mention)
+#### Examples
+* `$loser ban @member`
 ### Delete messages
 #### Format
 `$loser delete <amount>`
