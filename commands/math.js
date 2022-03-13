@@ -6,11 +6,11 @@ module.exports = async function (Member, Discord, bot, message, args) {
     try {
       const result = mathjs.evaluate(args.join(' '));
       response.setTitle(result);
-      error = false;
     }
     catch (err) {
-      console.log(err.message);
+      response.setTitle(err.message);
     }
+    error = false;
   }
   if (error) {
     response.setTitle("Error!");
