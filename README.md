@@ -35,5 +35,9 @@
 * `$loser math sin(5^2 deg)`
 * `$loser math sqrt(log(e^4))`
 * `$loser math 12.7cm to inch`
+### Get hentai
+* `$loser hentai gifs`
+* `$loser hentai feet`
+* `$loser hentai uglyBastard`
 ### Get some help
 * `$loser help`

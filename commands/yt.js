@@ -35,6 +35,7 @@ module.exports = async function (Model, Discord, bot, message, args) {
         }
       case "stop":
         await vc.leave();
+        error = false;
         break;
       default:
     }
