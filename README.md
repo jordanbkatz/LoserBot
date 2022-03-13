@@ -25,6 +25,9 @@
 ## Miscellaneous
 ### Get a meme from r/dankmemes
 * `$loser meme`
+### Get guild member xp
+* `$loser xp`
+* `$loser xp @member`
 ### Get a random number
 * `$loser random 0 10`
 * `$loser random 50 100`
