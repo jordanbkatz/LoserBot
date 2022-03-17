@@ -68,15 +68,15 @@ bot.on("message", async function (message) {
           response.setTitle(`Please wait ${timeRemaining} seconds for cooldown to end`);
         }
         message.channel.send(response);
-        try {
-          await Member.findOneAndUpdate(
-            { user: message.author.id, guild: message.guild.id },
-            { $inc: { xp: gainedXp }}
-          );
-        }
-        catch (err) {
-          console.log(err.message);
-        }
+      }
+      try {
+        await Member.findOneAndUpdate(
+          { user: message.author.id, guild: message.guild.id },
+          { $inc: { xp: gainedXp }}
+        );
+      }
+      catch (err) {
+        console.log(err.message);
       }
     }
   }
