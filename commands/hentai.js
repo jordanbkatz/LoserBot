@@ -12,5 +12,8 @@ module.exports = async function (Member, Discord, bot, message, args) {
       console.log(err.message);
     }
   }
+  if (error) {
+    response.setTitle("Error!");
+  }
   return response;
 };
